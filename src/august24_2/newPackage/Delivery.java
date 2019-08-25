@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.json.JSONObject;
 
 /**
  *
@@ -28,10 +29,12 @@ public class Delivery {
         stm.setInt(1,noitem);
         stm.setTimestamp(2, java.sql.Timestamp.valueOf(str)); 
         int rs=stm.executeUpdate();
-        System.out.println(rs);
-        stm.close();
-        con.close();
-              
+       // System.out.println(rs + " inserted ");
+        String strin= rs + " row(s) inserted";
+        JSONObject mainObject= new JSONObject();
+        mainObject.accumulate("message", strin);
+        System.out.println(mainObject);
+      
 }
     
     
@@ -41,9 +44,13 @@ public class Delivery {
         stm=con.prepareStatement(sql);
         stm.setInt(1,nodelivery);
         int rs=stm.executeUpdate();
-        System.out.println(rs);
-        stm.close();
-        con.close();
+        
+        String str = rs + " row(s) updated successfully";
+        JSONObject mainnObject  = new JSONObject();
+        mainnObject.accumulate("message", str);
+        System.out.println(mainnObject);
+        //System.out.println(rs + " deleted ");
+        
 
     }
     
@@ -53,14 +60,23 @@ public class Delivery {
     public void updateDelivery(Connection con,PreparedStatement stm, int nodelivery, String datedelivery) throws SQLException{
         
 
-        String sql="update delivery set nodelivery=? where datedelivery=?";
+        String sql="update delivery set datedelivery= to_date(?,'DD_MM_YYYY') where nodelivery=?";
         stm= con.prepareStatement(sql);
-        stm.setInt(1, nodelivery);
-        stm.setTimestamp(2, java.sql.Timestamp.valueOf(datedelivery));
+        stm.setInt(2, nodelivery);
+        stm.setString(1, datedelivery);
         int rs=stm.executeUpdate();
-        System.out.println(rs);
-        stm.close();
-        con.close();
+     //   System.out.println(rs+ " updated");
+        String str= rs + " row(s) updated";
+        JSONObject mainObject = new JSONObject();
+        mainObject.accumulate("message", str);
+        System.out.println(mainObject);
+        /* String str = rs + " row(s) updated succefully";
+        
+        JSONObject mainObject = new JSONObject(); 
+        mainObject.accumulate("Message", str);
+        
+        System.out.println(mainObject);*/
+      
         
 
        

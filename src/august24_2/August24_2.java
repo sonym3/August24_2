@@ -36,17 +36,22 @@ public class August24_2 {
           Client c = new Client();
            
            
-           /*
+           
            //DELIVERY CLASS
+          
+           
+          
            String str = "2013-09-04 13:30:00";
-           int noitem = 27;
+           int noitem = 61;
            d.insertDelivery(con, stm, noitem, str);
+           
+           int no_delivery =28; 
+           String datedelivery = "02041993";
+         //  d.updateDelivery(con, stm, no_delivery, datedelivery);
+          
          
-          int no_delivery =27; 
-           String datedelivery = "2001-01-01 01:01:01";
-           d.updateDelivery(con, stm, no_delivery, datedelivery);
            
-           
+           /*
            int nodelivery = 27;
            d.deleteDelivery(con, stm, nodelivery);
          
@@ -63,7 +68,7 @@ public class August24_2 {
      
            */
           
-          //CLIENT CLASS
+         /* //CLIENT CLASS
           
             Double noclient2=97.0;
             String nameclient2="Asma";
@@ -85,7 +90,7 @@ public class August24_2 {
              
              int noclient4=60;
              c.clientSingle(con, stm, noclient4);
-       
+       */
            
     } catch (SQLException ex) {
             Logger.getLogger(August24_2.class.getName()).log(Level.SEVERE, null, ex);

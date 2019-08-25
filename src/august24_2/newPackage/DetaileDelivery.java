@@ -28,9 +28,8 @@ public class DetaileDelivery {
         stm=con.prepareStatement(sql);
         stm.setInt(1,nodelivery);
         int rs=stm.executeUpdate();
-        System.out.println(rs);
-        stm.close();
-        con.close();
+        System.out.println(rs + " deleted");
+        
 
         
     }
@@ -48,10 +47,8 @@ public class DetaileDelivery {
         stm.setInt(3,noitem);
         stm.setInt(4,quantitydelivery);
         int rs=stm.executeUpdate();
-        System.out.println(rs);
+        System.out.println(rs + " inserted ");
         
-        stm.close();
-        con.close();
   
 }
     
@@ -65,9 +62,8 @@ public class DetaileDelivery {
         stm.setInt(1,nodelivery);
         stm.setInt(2,noitem);
         int rs=stm.executeUpdate();
-        System.out.println(rs);
-        stm.close();
-        con.close();
+        System.out.println(rs + " Updated ");
+      
         
         
     }
@@ -82,7 +78,8 @@ public class DetaileDelivery {
         while(rs.next()){
             System.out.println(rs.getInt(1) + " - " + rs.getString(2));
         }
-    
+      stmt.close();
+        con.close();
 }
     
     
