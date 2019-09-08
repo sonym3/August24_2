@@ -25,8 +25,7 @@ public class August24_2 {
      */
     public static void main(String[] args) {
         
-        Delivery d = new Delivery();
-        DetaileDelivery dd = new DetaileDelivery();
+        
           try{
           Connection con=null;
           PreparedStatement stm=null;
@@ -34,43 +33,11 @@ public class August24_2 {
           DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
           con=DriverManager.getConnection("jdbc:oracle:thin:@144.217.163.57:1521:XE", "sales", "anypw");
           Client c = new Client();
-           
-           
-           
-           //DELIVERY CLASS
+          DetailedOrder deO = new DetailedOrder();
+           System.out.println("::::::::::::::::CLIENT CLASS:::::::::::::::::::");
+         //CLIENT CLASS
           
-           
-          
-           String str = "2013-09-04 13:30:00";
-           int noitem = 61;
-           d.insertDelivery(con, stm, noitem, str);
-           
-           int no_delivery =28; 
-           String datedelivery = "02041993";
-         //  d.updateDelivery(con, stm, no_delivery, datedelivery);
-          
-         
-           
-           /*
-           int nodelivery = 27;
-           d.deleteDelivery(con, stm, nodelivery);
-         
-           */
-           
-          /* 
-           //DETAILEDDELIVERY CLASS
-           int no_delivery2 = 104;
-           dd.deleteDetaileDelivery(con, stm, no_delivery2);
-           
-           int no_delivery3 = 101;
-           int no_item2 = 95;
-           dd.updateDetaileDelivery(con, stm, no_delivery3, no_item2);
-     
-           */
-          
-         /* //CLIENT CLASS
-          
-            Double noclient2=97.0;
+          Double noclient2=97.0;
             String nameclient2="Asma";
             String notelephone2= "12345678";
             
@@ -90,8 +57,57 @@ public class August24_2 {
              
              int noclient4=60;
              c.clientSingle(con, stm, noclient4);
-       */
+       
+           /// ITEM CLASS
            
+              System.out.println("::::::::::::::::ITEM CLASSS:::::::::::::::::::");
+           Item i = new Item();
+           int noItem =1110;
+           String description="T shirt";
+           Double price=67.6;
+           int quanity=10;
+           i.itemInsert(con, stm, noItem, description, price, quanity);
+           
+           
+           Double price2 =12.3;
+           int noItem2=1110;
+           i.itemUpdate(con, stm, price2, noItem2);
+           
+           
+           
+          int noItem3=1110; 
+          i.itemDelete(con, stm, noItem3);
+          
+          i.itemList(con, stmt);
+          
+          int noItem4=10;
+          i.itemSingle(con, stm, noItem4);
+          
+      // DETAILED ORDER
+         System.out.println("::::::::::::::::DETAILED ORDER:::::::::::::::::::");
+      int noItem9=10;
+      int noOrder9=1;
+     // deO.DetailedOrderInsert(con, stm, noOrder9, noItem9, quantity9);
+      
+      int quantity8=34;
+      
+      
+      deO.DetailedOrderUpdate(con, stm, noOrder9, noItem9, quantity8);
+      int x=4,y=50;
+      
+      deO.DetailedOrderDelete(con, stm, x, y);
+          
+      
+      deO.DetailedOrderList(con, stmt);
+      
+      
+      int noOrder7=1;
+      int noItem7=10;
+      deO.DetailedOrderSingle(con, stm, noOrder7, noItem7);
+          
+      
+      
+      
     } catch (SQLException ex) {
             Logger.getLogger(August24_2.class.getName()).log(Level.SEVERE, null, ex);
         }

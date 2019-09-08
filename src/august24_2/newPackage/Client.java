@@ -38,8 +38,8 @@ public class Client {
         mainObject.accumulate("Message", str);
         
         System.out.println(mainObject);
-      //  stm.close();
       //  con.close();
+      //  stm.close();
     }
 
     public void clientInsert(Connection con,PreparedStatement stm, Double noclient, String nameclient, String notelephone ) throws SQLException {
@@ -129,9 +129,7 @@ public class Client {
     
     
    
-       stm.close();
-      // stmt.close();
-        con.close();  
+      
         
     }
           
