@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.json.JSONObject;
 
 /**
  *
@@ -24,12 +25,12 @@ public class August24_2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
-          try{
-          Connection con=null;
+        Connection con=null;
           PreparedStatement stm=null;
           Statement stmt = null;
+        
+          try{
+          
           DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
           con=DriverManager.getConnection("jdbc:oracle:thin:@144.217.163.57:1521:XE", "sales", "anypw");
           Client c = new Client();
@@ -107,11 +108,43 @@ public class August24_2 {
           
       
       
-      
-    } catch (SQLException ex) {
+          } catch (SQLException ex) {
             Logger.getLogger(August24_2.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+              
+              if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    JSONObject mainObject=new JSONObject();
+        
+        mainObject.accumulate("Message", "database connection error" );
+        System.out.println(mainObject);
+                }
+            }
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException e) {
+                    JSONObject mainObject=new JSONObject();
+        
+        mainObject.accumulate("Message", "database connection error" );
+        System.out.println(mainObject);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    JSONObject mainObject=new JSONObject();
+        
+        mainObject.accumulate("Message", "database connection error" );
+        System.out.println(mainObject);
+                }
+            }
         }
     }
+    
         
         
     }

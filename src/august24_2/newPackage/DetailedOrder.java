@@ -109,8 +109,7 @@ public class DetailedOrder {
           //  System.out.println(rs.getInt(1) + " - " + rs.getString(2)+ " - " + rs.getString(3));
         }
         System.out.println(jsonArray);
-         //  stmt.close();
-       // con.close();
+        
         
     }
       
@@ -136,8 +135,6 @@ public class DetailedOrder {
     
     
    
-    stm.close();
-    con.close();
    
         
     }
